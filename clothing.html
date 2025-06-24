@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANITY | Pride in Everything</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000;
+            --secondary: #fff;
+            --accent: #d4af37;
+            --text: #333;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1539109136884-8d90e6e00806?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .collection-item {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .collection-item:hover .collection-overlay {
+            opacity: 1;
+        }
+        
+        .collection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        /* Micro-interaction for cart icon */
+        .cart-icon {
+            transition: transform 0.3s;
+        }
+        
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+        }
+        
+        /* Animation for the hero text */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-text {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        /* Cultural pattern overlay */
+        .pattern-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0 0 L100 0 L100 100 L0 100 Z" fill="none" stroke="black" stroke-width="2" stroke-opacity="0.05"/></svg>');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Cultural pattern overlay -->
+    <div class="pattern-overlay fixed inset-0 z-50 pointer-events-none"></div>
+    
+    <!-- Header -->
+    <header class="fixed w-full bg-white bg-opacity-90 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-bold playfair tracking-wider text-black">VANITY</a>
+            
+            <!-- Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link text-black font-medium">HOME</a>
+                <a href="#collections" class="nav-link text-black font-medium">COLLECTIONS</a>
+                <a href="#about" class="nav-link text-black font-medium">ABOUT</a>
+                <a href="#contact" class="nav-link text-black font-medium">CONTACT</a>
+            </nav>
+            
+            <!-- Cart and Search -->
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-black"><i class="fas fa-search"></i></a>
+                <a href="#" class="text-black cart-icon relative">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                </a>
+                <button class="md:hidden text-black">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center relative text-white">
+        <div class="container mx-auto px-6 z-10">
+            <div class="hero-text max-w-2xl">
+                <h1 class="playfair text-5xl md:text-7xl font-bold mb-6 leading-tight">Break The BARRIERS</h1>
+                <p class="text-lg md:text-xl mb-8 font-light leading-relaxed">VANITY is not just clothing. It's a statement of cultural fusion, a celebration of the modern Indian spirit that refuses to be boxed.</p>
+                <a href="#collections" class="bg-transparent border-2 border-white text-white px-8 py-3 font-medium hover:bg-white hover:text-black transition duration-300 inline-block">EXPLORE</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Collections -->
+    <section id="collections" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="playfair text-4xl font-bold mb-4">FEATURED COLLECTIONS</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Discover our latest collections that blend traditional craftsmanship with contemporary design.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Collection 1 -->
+                <a href="#" class="collection-item h-96 bg-gray-100 relative" style="background-image: url('https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1735&q=80'); background-size: cover; background-position: center;">
+                    <div class="collection-overlay">
+                        <h3 class="text-white text-2xl font-bold playfair">URBAN NOMAD</h3>
+                    </div>
+                </a>
+                
+                <!-- Collection 2 -->
+                <a href="#" class="collection-item h-96 bg-gray-100 relative" style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80'); background-size: cover; background-position: center;">
+                    <div class="collection-overlay">
+                        <h3 class="text-white text-2xl font-bold playfair">MONOCHROME MOVEMENT</h3>
+                    </div>
+                </a>
+                
+                <!-- Collection 3 -->
+                <a href="#" class="collection-item h-96 bg-gray-100 relative" style="background-image: url('https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'); background-size: cover; background-position: center;">
+                    <div class="collection-overlay">
+                        <h3 class="text-white text-2xl font-bold playfair">CULTURE FUSION</h3>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="inline-block border-2 border-black text-black px-8 py-3 font-medium hover:bg-black hover:text-white transition duration-300">VIEW ALL COLLECTIONS</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Products -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="playfair text-4xl font-bold mb-4">CURATED SELECTION</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Each piece is crafted with precision to reflect the essence of modern Indian fashion.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white p-6">
+                    <div class="relative overflow-hidden h-64 mb-4">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1736&q=80" alt="Embroidered Shirt" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-medium mb-1">Embroidered Cotton Shirt</h3>
+                    <p class="text-gray-600 mb-2">Handcrafted with traditional motifs</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold">₹3,499</span>
+                        <button class="text-black hover:text-gray-600"><i class="far fa-heart"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white p-6">
+                    <div class="relative overflow-hidden h-64 mb-4">
+                        <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80" alt="Linen Pants" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-medium mb-1">Wide-leg Linen Pants</h3>
+                    <p class="text-gray-600 mb-2">Perfect for summer days</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold">₹2,999</span>
+                        <button class="text-black hover:text-gray-600"><i class="far fa-heart"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white p-6">
+                    <div class="relative overflow-hidden h-64 mb-4">
+                        <img src="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Silk Shirt" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-medium mb-1">Raw Silk Shirt</h3>
+                    <p class="text-gray-600 mb-2">Luxurious with a modern cut</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold">₹5,999</span>
+                        <button class="text-black hover:text-gray-600"><i class="far fa-heart"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white p-6">
+                    <div class="relative overflow-hidden h-64 mb-4">
+                        <img src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Dress" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition duration-300"></div>
+                    </div>
+                    <h3 class="text-xl font-medium mb-1">Asymmetrical Cotton Dress</h3>
+                    <p class="text-gray-600 mb-2">Contemporary with traditional block prints</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold">₹4,299</span>
+                        <button class="text-black hover:text-gray-600"><i class="far fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-black text-black px-8 py-3 font-medium hover:bg-black hover:text-white transition duration-300">SHOP NEW ARRIVALS</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Brand Philosophy -->
+    <section id="about" class="py-20 bg-black text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="playfair text-4xl font-bold mb-6">THE VANITY PHILOSOPHY</h2>
+                    <p class="text-lg mb-6 leading-relaxed">VANITY was born from the idea that clothing is more than fabric - it's a canvas for self-expression and cultural celebration. We blend contemporary design with traditional Indian craftsmanship to create pieces that speak to the modern Indian spirit.</p>
+                    <p class="text-lg leading-relaxed">Our collections are designed for those who refuse to be confined by tradition or trends. For those who find pride in their roots while embracing the freedom of the future.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative h-96
