@@ -69,10 +69,16 @@ export const products: Product[] = [
 
 export const categories = [
   "All",
-  "Hoodies",
-  "Jackets", 
-  "Pants",
-  "T-Shirts",
-  "Footwear",
+  "Shirt",
+  "Tshirt",
+  "Formals",
+  "Casuals",
+  "Season",
+  "Sale",
+  "Co ords",
+  "Jeans",
+  "Trousers",
+  "Collections",
+  "Bestsellers",
   "Accessories"
 ];

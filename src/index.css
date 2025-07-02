@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  @apply font-mono;
+}
+

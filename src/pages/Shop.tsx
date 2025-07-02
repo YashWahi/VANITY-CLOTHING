@@ -17,6 +17,10 @@ const Shop = () => {
         return a.price - b.price;
       case 'price-high':
         return b.price - a.price;
+      case 'members-exclusive':
+        if (a.category === 'Members Exclusive' && b.category !== 'Members Exclusive') return -1;
+        if (a.category !== 'Members Exclusive' && b.category === 'Members Exclusive') return 1;
+        return a.name.localeCompare(b.name);
       case 'name':
       default:
         return a.name.localeCompare(b.name);
@@ -76,6 +80,7 @@ const Shop = () => {
               <option value="name">Name</option>
               <option value="price-low">Price: Low to High</option>
               <option value="price-high">Price: High to Low</option>
+              <option value="members-exclusive">Members Exclusive</option>
             </select>
           </div>
         </motion.div>
